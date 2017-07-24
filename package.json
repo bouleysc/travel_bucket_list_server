@@ -1,5 +1,5 @@
 {
-  "name": "travel_bucket_list",
+  "name": "travel_bucket_list_server",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bouleysc/travel_bucket_list.git"
+    "url": "git+https://github.com/bouleysc/travel_bucket_list_server.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/bouleysc/travel_bucket_list/issues"
+    "url": "https://github.com/bouleysc/travel_bucket_list_server/issues"
   },
-  "homepage": "https://github.com/bouleysc/travel_bucket_list#readme",
+  "homepage": "https://github.com/bouleysc/travel_bucket_list_server#readme",
   "dependencies": {
     "cors": "^2.8.4",
     "dotenv": "^4.0.0",
