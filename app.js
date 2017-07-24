@@ -13,6 +13,5 @@ app.use(cors());
 
 app.get('/', (request,response) => {
   response.send("Hello....");
-  })
-})
+});
 app.listen(process.env.PORT || 8000);
