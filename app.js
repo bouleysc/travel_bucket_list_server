@@ -11,14 +11,13 @@ app.get('/places', (request,response) => {
   });
 });
 
-// app.get('/places/:id', (request,response){
-//   let id = request.params.id
-//   knex('place')
-//   .select('state')
-//   .where('id',id)
-//   .then((data) => {
-//     response.json(data)
-//   });
-// });
+app.get('/places/:id', (request,response) => {
+  let id = request.params.id
+  knex('place')
+  .where('id',id).first()
+  .then((data) => {
+    response.json(data)
+  });
+});
 
 app.listen(process.env.PORT || 8000);
