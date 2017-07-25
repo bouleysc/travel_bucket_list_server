@@ -6,27 +6,27 @@ exports.seed = function(knex, Promise) {
       id: 1,
       city: 'New Orleans',
       state: 'Louisiana',
-      rating: null
+      rating: 1
     }, {
       id: 2,
       city: 'Savannah',
       state: 'Georgia',
-      rating: null
+      rating: 2
     }, {
       id: 3,
       city: 'San Antonio',
       state: 'Texas',
-      rating: null
+      rating: 3
     }, {
       id: 4,
       city: 'Anchorage',
       state: 'Alaska',
-      rating: null
+      rating: 4
     }, {
       id: 5,
       city: 'San Francisco',
       state: 'California',
-      rating: null
+      rating: 5
     }];
   return knex('place').insert(place);
   });
