@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.text('city').notNullable();
     table.text('state').notNullable();
-    table.integer('days_desired');
+    table.integer('rating');
   });
 };
 
