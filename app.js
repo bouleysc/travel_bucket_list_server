@@ -20,9 +20,9 @@ function validPlace(data) {
   return validCity && validState;
 }
 
-function validId(request, response, next){
+function validId(request, response, next) {
   let id = request.params.id;
-  if(!isNAN(id)){
+  if(!isNaN(id)){
     return next();
   } else {
     response.json({message: 'Invalid ID parameter'})
