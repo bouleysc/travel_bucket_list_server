@@ -22,11 +22,11 @@ function validPlace(data) {
 
 function validId(request, response, next){
   let id = request.params.id;
-  if(!isNAN()){
+  if(!isNAN(id)){
     return next();
   } else {
     response.json({message: 'Invalid ID parameter'})
-  }  
+  }
 }
 
 app.get('/places/:id', validId, (request,response) => {
