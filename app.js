@@ -14,7 +14,22 @@ app.get('/places', (request,response) => {
   });
 });
 
-app.get('/places/:id', (request,response) => {
+function validPlace(data) {
+  let validCity = typeof data.city == 'string' && data.city.trim() != '';
+  let validState = typeof data.state == 'string' && data.state.trim() != '';
+  return validCity && validState;
+}
+
+function validId(request, response, next){
+  let id = request.params.id;
+  if(!isNAN()){
+    return next();
+  } else {
+    response.json({message: 'Invalid ID parameter'})
+  }  
+}
+
+app.get('/places/:id', validId, (request,response) => {
   let id = request.params.id
   knex('place')
   .where('id',id).first()
@@ -25,14 +40,18 @@ app.get('/places/:id', (request,response) => {
 
 app.post('/places', (request,response) => {
   let post = request.body;
-  knex('place').insert(post)
-  .returning('*')
-  .then(data => {
-    response.json(data);
-  });
+  if (validPlace(post)) {
+    knex('place').insert(post)
+    .returning('*')
+    .then(data => {
+      response.json(data);
+    });
+  } else {
+    response.json({message: 'Invalid input'})
+  }
 });
 
-app.put('/places/:id', (request,response) => {
+app.put('/places/:id', validId, (request,response) => {
   let id = request.params.id;
   let edit = request.body;
   knex('place').where('id',id)
@@ -43,7 +62,7 @@ app.put('/places/:id', (request,response) => {
   });
 });
 
-app.delete('/places/:id', (request,response) => {
+app.delete('/places/:id', validId, (request,response) => {
   let id = request.params.id;
   knex('place')
   .where('id',id).del()
