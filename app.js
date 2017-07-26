@@ -17,7 +17,8 @@ app.get('/places', (request,response) => {
 function validPlace(data) {
   let validCity = typeof data.city == 'string' && data.city.trim() != '';
   let validState = typeof data.state == 'string' && data.state.trim() != '';
-  return validCity && validState;
+  let validRating = typeof data.rating == 'number' != '';
+  return validCity && validState && validRating;
 }
 
 function validId(request, response, next) {
