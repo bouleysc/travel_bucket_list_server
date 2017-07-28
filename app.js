@@ -55,12 +55,16 @@ app.post('/places', (request,response) => {
 app.put('/places/:id', validId, (request,response) => {
   let id = request.params.id;
   let edit = request.body;
-  knex('place').where('id',id)
-  .update(edit)
-  .returning('*')
-  .then(edited => {
-    response.json(edited);
-  });
+  if (validPlace(edit)) {
+    knex('place').where('id',id)
+    .update(edit)
+    .returning('*')
+    .then(edited => {
+      response.json(edited);
+    });
+  } else {
+    response.json({message: 'Invalid input'})
+  }
 });
 
 app.delete('/places/:id', validId, (request,response) => {
