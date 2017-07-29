@@ -17,7 +17,7 @@ app.get('/places', (request,response) => {
 function validPlace(data) {
   let validCity = typeof data.city === 'string' && data.city.trim() !== '' && isNaN(data.city);
   let validState = typeof data.state === 'string' && data.state.trim() !== '' && isNaN(data.state);
-  let validRating = !isNaN(data.rating);
+  let validRating = !isNaN(data.rating) && data.rating <= 10 && data.rating >= 1;
   return validCity && validState && validRating;
 }
 
